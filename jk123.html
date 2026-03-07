@@ -1,0 +1,94 @@
+
+padding:30px;
+border-radius:10px;
+width:500px;
+margin:auto;
+}
+
+button{
+padding:10px 20px;
+background:#667eea;
+border:none;
+color:white;
+cursor:pointer;
+}
+
+.result{
+margin-top:20px;
+text-align:left;
+}
+
+img{
+margin-top:20px;
+width:200px;
+border-radius:10px;
+}
+
+</style>
+</head>
+
+<body>
+
+<h1>StyleAI</h1>
+<p>AI Powered Fashion Styling Advisor</p>
+
+<div class="container">
+
+<form action="/upload" method="POST" enctype="multipart/form-data">
+
+<input type="file" name="image" required><br><br>
+
+<label>Select Gender</label><br>
+
+<select name="gender">
+
+<option>Male</option>
+<option>Female</option>
+
+</select>
+
+<br><br>
+
+<button type="submit">Get Style Advice</button>
+
+</form>
+
+
+{% if skin_tone %}
+
+<div class="result">
+
+<h3>Detected Skin Tone:</h3>
+<p>{{ skin_tone }}</p>
+
+<h3>AI Style Recommendations:</h3>
+<p>{{ recommendation }}</p>
+
+<img src="{{ url_for('static', filename='uploads/' + image) }}">
+
+</div>
+
+{% endif %}
+
+</div>
+
+</body>
+</html><!DOCTYPE html>
+<html>
+<head>
+
+<title>StyleAI - Fashion Advisor</title>
+
+<style>
+
+body{
+font-family: Arial;
+background: linear-gradient(120deg,#667eea,#764ba2);
+color:white;
+text-align:center;
+padding:40px;
+}
+
+.container{
+background:white;
+color:black;
